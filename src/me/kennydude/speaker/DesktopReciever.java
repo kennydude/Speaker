@@ -29,6 +29,9 @@ public class DesktopReciever extends BroadcastReceiver {
 		if (extras != null) {
 			title = extras.getString(EXTRA_TITLE);
 			description = extras.getString(EXTRA_DESCRIPTION);
+			if(extras.containsKey("no_speak")){
+				return;
+			}
 		}
 		
 		String to_say = "";
