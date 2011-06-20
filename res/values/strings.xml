@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Speaker</string>
+    <string name="will_speak_sms">Speaker will read-out new text messages</string>
+    <string name="speak_sms">Speak new SMS messages</string>
+    <string name="sms_readout">You have a new message from {from} saying, {message}</string>
+    <string name="wont_speak_sms">Speaker will not read-out new SMS messages</string>
+    <string name="will_speak_desktop">Desktop notifications will also be spoken</string>
+    <string name="wont_speak_desktop">Desktop notifications will not be spoken</string>
+    <string name="speak_desktop_notifications">Speak notifications sent to Android Desktop Notifier</string>
+    <string name="test_desktop_notifer">Test Desktop Notifier</string>
+    <string name="test_desktop_notifier_hint">Sends a test notification via Desktop Notifier</string>
+    <string name="telephone_options">Phone related settings</string>
+    <string name="notify_calls">Announce incoming calls</string>
+    <string name="will_speak_calls">Speaker will tell you about incoming calls</string>
+    <string name="call_readout">{from} is calling you</string>
+    <string name="talking">Speaker is announcing</string>
+    <string name="wont_speak_calls">Speaker will not tell you about incoming calls</string>
+    <string name="headphones_only">Headphones only</string>
+    <string name="headphones_only_on">Speaker will only announce when you have headphones plugged in</string>
+    <string name="headphones_only_off">Speaker will announce even if headphones are not plugged in</string>
+    <string name="audio_options">Audio Options</string>
+    <string name="audio_ducking">Audio Ducking</string>
+    <string name="link">Web Address</string>
+    <string name="happy_face">Happy Face</string>
+    <string name="sad_face">Sad Face</string>
+    <string name="audio_ducking_on">Speaker will lower media volume to announce things</string>
+    <string name="audio_ducking_off">Speaker will not lower the volume at all</string>
+    <string name="enable_speaker">Enable Speaker</string>
+    <string name="global_on">Speaker is enabled</string>
+    <string name="global_off">Speaker is disabled and will not speak anything</string>
+    <string name="third_party">Third Party Options</string>
+    <string name="external_apps">Enable Speaker API</string>
+    <string name="api_on">Speaker will announce things by other apps</string>
+    <string name="api_off">Speaker will not announce things by other apps</string>
+    <string name="custom_sms_readout">SMS Announcement Script</string>
+    <string name="custom_sms_readout_hint">Create a custom script to be read when you are texted</string>
+    <string name="custom_call_readout">Call Announcement Script</string>
+    <string name="custom_call_readout_hint">Create a custom script to be read when you are called</string>
+</resources>
