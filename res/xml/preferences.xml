@@ -13,7 +13,7 @@
     
     <PreferenceCategory android:key="thirdParty" android:title="@string/third_party">
         
-    </PreferenceCategory><CheckBoxPreference android:key="thirdParty" android:summaryOn="@string/api_on" android:summaryOff="@string/api_off" android:title="@string/app_name"></CheckBoxPreference><CheckBoxPreference android:defaultValue="true" android:key="androidDesktopNotifier" android:summaryOn="@string/will_speak_desktop" android:title="@string/speak_desktop_notifications" android:summaryOff="@string/wont_speak_desktop"></CheckBoxPreference>
+    </PreferenceCategory><CheckBoxPreference android:key="thirdParty" android:summaryOn="@string/api_on" android:summaryOff="@string/api_off" android:title="@string/app_name" android:defaultValue="true"></CheckBoxPreference><CheckBoxPreference android:defaultValue="true" android:key="androidDesktopNotifier" android:summaryOn="@string/will_speak_desktop" android:title="@string/speak_desktop_notifications" android:summaryOff="@string/wont_speak_desktop"></CheckBoxPreference>
     
     <Preference android:title="@string/test_desktop_notifer" android:summary="@string/test_desktop_notifier_hint" android:key="testDesktopNotifier"></Preference>
     
