@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="tts_no_config">Text-To-Speech is not configured. Tap to open it</string>
+	<string name="unknown_number">Unknown Number</string>
     <string name="app_name">Speaker</string>
     <string name="will_speak_sms">Speaker will read-out new text messages</string>
     <string name="speak_sms">Speak new SMS messages</string>

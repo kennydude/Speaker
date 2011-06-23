@@ -22,13 +22,17 @@ public class SpeakerShared {
             cr.moveToFirst();
             return cr.getString(0);
         }catch(Exception e){
-        	e.printStackTrace();
-        	String number = ""; // Trick tts
-        	char[] numbers = phoneNumber.toCharArray();
-        	for(char n : numbers){
-        		number += n + " ";
+        	try{
+	        	e.printStackTrace();
+	        	String number = ""; // Trick tts
+	        	char[] numbers = phoneNumber.toCharArray();
+	        	for(char n : numbers){
+	        		number += n + " ";
+	        	}
+	        	return number;
+        	} catch(Exception ae){
+        		return cntxt.getString(R.string.unknown_number);
         	}
-        	return number;
         }
 	}
 }

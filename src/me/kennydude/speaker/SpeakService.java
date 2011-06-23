@@ -29,6 +29,25 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
         	params.put(TextToSpeech.Engine.KEY_PARAM_STREAM, AudioManager.STREAM_NOTIFICATION + "");
         	params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, spokenText.hashCode() + "");
             mTts.speak(spokenText, TextToSpeech.QUEUE_ADD, params);
+        } else{
+        	NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    		int icon = R.drawable.ic_stat_talking;
+    		CharSequence tickerText = getResources().getText(R.string.tts_no_config);
+    		long when = System.currentTimeMillis();
+    		
+    		mNotificationManager.cancel(spokenText.hashCode());
+        	
+        	Notification notification = new Notification(icon, tickerText, when);
+    		Context context = getApplicationContext();
+    		CharSequence contentTitle = getResources().getText(R.string.app_name);
+    		CharSequence contentText = getResources().getText(R.string.tts_no_config);
+    		Intent notificationIntent = new Intent();
+    		notificationIntent.setAction(
+                    TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+    		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+    		notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_AUTO_CANCEL;
+    		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+    		mNotificationManager.notify(3395785, notification);
         }
     }
 
@@ -103,7 +122,7 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 		CharSequence contentText = getResources().getText(R.string.talking);
 		Intent notificationIntent = new Intent(this, SpeakerSettingsActivity.class);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-		notification.flags = Notification.FLAG_ONGOING_EVENT;
+		notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_AUTO_CANCEL;
 		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 		mNotificationManager.notify(spokenText.hashCode(), notification);
 	}
