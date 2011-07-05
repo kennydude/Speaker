@@ -39,4 +39,10 @@
     <string name="custom_sms_readout_hint">Create a custom script to be read when you are texted</string>
     <string name="custom_call_readout">Call Announcement Script</string>
     <string name="custom_call_readout_hint">Create a custom script to be read when you are called</string>
+    <string name="renotify_calls">Re-announce incoming calls</string>
+    <string name="renotify_on">Speaker will announce incoming calls until they are picked up</string>
+    <string name="renotify_off">Speaker will only speak incoming call alerts once (if enabled)</string>
+    <string name="skip_silent">Speak during Silent</string>
+    <string name="skip_silent_on">Speaker will still speak while your phone is in Silent</string>
+    <string name="skip_silent_off">Speaker will not speak while your phone is in silent</string>
 </resources>

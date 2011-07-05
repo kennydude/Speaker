@@ -25,8 +25,14 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
         	mTts.setOnUtteranceCompletedListener(this);
+        	SharedPreferences sp = SpeakerShared.getPrefs(this);
         	HashMap<String, String> params = new HashMap<String, String>();
-        	params.put(TextToSpeech.Engine.KEY_PARAM_STREAM, AudioManager.STREAM_NOTIFICATION + "");
+        	AudioManager audio = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        	int stream = AudioManager.STREAM_NOTIFICATION;
+        	if(audio.getRingerMode() != AudioManager.RINGER_MODE_NORMAL && sp.getBoolean("skipSilent", false) == true){
+        		stream = AudioManager.STREAM_ALARM;
+        	}
+        	params.put(TextToSpeech.Engine.KEY_PARAM_STREAM, stream + "");
         	params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, spokenText.hashCode() + "");
             mTts.speak(spokenText, TextToSpeech.QUEUE_ADD, params);
         } else{
