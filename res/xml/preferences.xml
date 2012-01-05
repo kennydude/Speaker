@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:key="globalOption" android:defaultValue="true" android:summaryOn="@string/global_on" android:summaryOff="@string/global_off" android:title="@string/enable_speaker"></CheckBoxPreference><PreferenceCategory android:key="audioOptions" android:title="@string/audio_options">
-        
-        
-    </PreferenceCategory>
-    <CheckBoxPreference android:summaryOff="@string/headphones_only_off" android:key="headphonesOnly" android:summaryOn="@string/headphones_only_on" android:defaultValue="false" android:title="@string/headphones_only"></CheckBoxPreference><CheckBoxPreference android:summaryOn="@string/skip_silent_on" android:key="skipSilent" android:summaryOff="@string/skip_silent_off" android:title="@string/skip_silent" android:defaultValue="false"></CheckBoxPreference><CheckBoxPreference android:summaryOff="@string/audio_ducking_off" android:key="audioDucking" android:summaryOn="@string/audio_ducking_on" android:defaultValue="true" android:title="@string/audio_ducking"></CheckBoxPreference><PreferenceCategory android:key="telephoneOptions" android:title="@string/telephone_options">
-        
-        
-        
-    </PreferenceCategory><CheckBoxPreference android:defaultValue="true" android:key="readSMS" android:summaryOn="@string/will_speak_sms" android:title="@string/speak_sms" android:summaryOff="@string/wont_speak_sms"></CheckBoxPreference>
-    <EditTextPreference android:title="@string/custom_sms_readout" android:key="smsOutput" android:summary="@string/custom_sms_readout_hint" android:defaultValue="@string/sms_readout"></EditTextPreference><CheckBoxPreference android:key="notifyCalls" android:title="@string/notify_calls" android:defaultValue="true" android:summaryOn="@string/will_speak_calls" android:summaryOff="@string/wont_speak_calls"></CheckBoxPreference>
-    <EditTextPreference android:title="@string/custom_call_readout" android:key="callOutput" android:summary="@string/custom_call_readout_hint" android:defaultValue="@string/call_readout"></EditTextPreference><CheckBoxPreference android:summaryOn="@string/renotify_on" android:key="renotifyCalls" android:summaryOff="@string/renotify_off" android:title="@string/renotify_calls" android:defaultValue="true"></CheckBoxPreference>
-    
-    <PreferenceCategory android:key="thirdParty" android:title="@string/third_party">
-        
-    </PreferenceCategory><CheckBoxPreference android:key="thirdParty" android:summaryOn="@string/api_on" android:summaryOff="@string/api_off" android:title="@string/app_name" android:defaultValue="true"></CheckBoxPreference><CheckBoxPreference android:defaultValue="true" android:key="androidDesktopNotifier" android:summaryOn="@string/will_speak_desktop" android:title="@string/speak_desktop_notifications" android:summaryOff="@string/wont_speak_desktop"></CheckBoxPreference>
-    
-    <Preference android:title="@string/test_desktop_notifer" android:summary="@string/test_desktop_notifier_hint" android:key="testDesktopNotifier"></Preference>
-    
-    
-    
-    
-    
-  
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/tts_setup"
+		android:summary="@string/please_wait"
+		android:key="status" />
+	<CheckBoxPreference android:key="globalOption"
+		android:defaultValue="true" android:summaryOn="@string/global_on"
+		android:summaryOff="@string/global_off" android:title="@string/enable_speaker" />
+	<PreferenceCategory android:key="audioOptions"
+		android:title="@string/audio_options">
+		<CheckBoxPreference android:summaryOff="@string/headphones_only_off"
+			android:key="headphonesOnly" android:summaryOn="@string/headphones_only_on"
+			android:defaultValue="false" android:title="@string/headphones_only" />
+		<CheckBoxPreference android:summaryOn="@string/skip_silent_on"
+			android:key="skipSilent" android:summaryOff="@string/skip_silent_off"
+			android:title="@string/skip_silent" android:defaultValue="false" />
+		<CheckBoxPreference android:summaryOff="@string/audio_ducking_off"
+			android:key="audioDucking" android:summaryOn="@string/audio_ducking_on"
+			android:defaultValue="true" android:title="@string/audio_ducking" />
+	</PreferenceCategory>
+	<PreferenceCategory android:key="telephoneOptions"
+		android:title="@string/telephone_options">
+		<CheckBoxPreference android:defaultValue="true"
+			android:key="readSMS" android:summaryOn="@string/will_speak_sms"
+			android:title="@string/speak_sms" android:summaryOff="@string/wont_speak_sms" />
+		<EditTextPreference android:title="@string/custom_sms_readout"
+			android:key="smsOutput" android:summary="@string/custom_sms_readout_hint"
+			android:defaultValue="@string/sms_readout" />
+		<CheckBoxPreference android:key="notifyCalls"
+			android:title="@string/notify_calls" android:defaultValue="true"
+			android:summaryOn="@string/will_speak_calls" android:summaryOff="@string/wont_speak_calls" />
+		<EditTextPreference android:title="@string/custom_call_readout"
+			android:key="callOutput" android:summary="@string/custom_call_readout_hint"
+			android:defaultValue="@string/call_readout" />
+		<CheckBoxPreference android:summaryOn="@string/renotify_on"
+			android:key="renotifyCalls" android:summaryOff="@string/renotify_off"
+			android:title="@string/renotify_calls" android:defaultValue="true" />
+	</PreferenceCategory>
+	<PreferenceCategory android:key="thirdParty"
+		android:title="@string/third_party">
+
+		<CheckBoxPreference android:key="thirdParty"
+			android:summaryOn="@string/api_on" android:summaryOff="@string/api_off"
+			android:title="@string/app_name" android:defaultValue="true" />
+		<CheckBoxPreference android:defaultValue="true"
+			android:key="androidDesktopNotifier" android:summaryOn="@string/will_speak_desktop"
+			android:title="@string/speak_desktop_notifications"
+			android:summaryOff="@string/wont_speak_desktop" />
+		<Preference android:title="@string/test_desktop_notifer"
+			android:summary="@string/test_desktop_notifier_hint" android:key="testDesktopNotifier" />
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="utils"
+		android:title="@string/utils">
+		<Preference 
+		    android:key="clipboard"
+		    android:title="@string/speak_clipboard"
+		    android:summary="@string/speak_clipbaord_description"
+		    />
+	</PreferenceCategory>
+
 </PreferenceScreen>

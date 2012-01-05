@@ -16,12 +16,12 @@ import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnUtteranceCompletedListener;
 import android.util.Log;
+import android.widget.Toast;
 
 public class SpeakService extends Service implements TextToSpeech.OnInitListener, OnUtteranceCompletedListener {
 	TextToSpeech mTts;
 	String spokenText;
 
-    @Override
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
         	mTts.setOnUtteranceCompletedListener(this);
@@ -30,7 +30,7 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
         	AudioManager audio = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         	int stream = AudioManager.STREAM_NOTIFICATION;
         	if(audio.getRingerMode() != AudioManager.RINGER_MODE_NORMAL && sp.getBoolean("skipSilent", false) == true){
-        		stream = AudioManager.STREAM_ALARM;
+        		stream = AudioManager.STREAM_MUSIC;
         	}
         	params.put(TextToSpeech.Engine.KEY_PARAM_STREAM, stream + "");
         	params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, spokenText.hashCode() + "");
@@ -57,11 +57,11 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
         }
     }
 
-    @Override
     public void onUtteranceCompleted(String uttId) {
     	NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.cancel(Integer.parseInt(uttId));
         AudioManager audio = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        
         if(Build.VERSION.SDK_INT >= 8){
 			FroyoDucking.looseDucking(audio);
 		} else{
@@ -94,6 +94,15 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 		return null;
 	}
 	
+	static boolean bNotifiyIfCanceled = false;
+	void notifyIfCanceled(){
+		Log.d("s", "canceled");
+		if(bNotifiyIfCanceled == true){
+			Log.d("s", "display toast");
+			Toast.makeText(this.getApplicationContext(), R.string.canceled, Toast.LENGTH_LONG).show();
+		}
+	}
+	
 	void start(String text){
 		Log.d("s", "Item added to SpeakService!");
 		
@@ -105,8 +114,13 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 		AudioManager audio = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 		if(sp.getBoolean("headphonesOnly", false) == true){
 			if(!audio.isWiredHeadsetOn()){
+				notifyIfCanceled();
 				return;
 			}
+		}
+		if(audio.getRingerMode() != AudioManager.RINGER_MODE_NORMAL && sp.getBoolean("skipSilent", false) == false){
+			notifyIfCanceled();
+			return;
 		}
 		if(Build.VERSION.SDK_INT >= 8){
 			FroyoDucking.getDucking(audio);
@@ -135,11 +149,13 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 	
 	@Override
 	public void onStart(Intent intent, int startId) {
+		bNotifiyIfCanceled = intent.hasExtra("notifyIfCanceled");
 		start(intent.getStringExtra("speak"));
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		bNotifiyIfCanceled = intent.hasExtra("notifyIfCanceled");
 		start(intent.getStringExtra("speak"));
 		return Service.START_NOT_STICKY;
 	}

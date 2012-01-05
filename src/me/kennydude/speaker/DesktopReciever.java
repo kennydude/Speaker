@@ -41,6 +41,9 @@ public class DesktopReciever extends BroadcastReceiver {
 			to_say += description;
 		Intent service = new Intent(cntxt, SpeakService.class);
     	service.putExtra("speak", to_say);
+    	if(intent.hasExtra("notifyIfCanceled")){
+    		service.putExtra("notifyIfCanceled", true);
+    	}
     	cntxt.startService(service);
 	}
 

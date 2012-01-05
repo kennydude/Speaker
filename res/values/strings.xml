@@ -45,4 +45,13 @@
     <string name="skip_silent">Speak during Silent</string>
     <string name="skip_silent_on">Speaker will still speak while your phone is in Silent</string>
     <string name="skip_silent_off">Speaker will not speak while your phone is in silent</string>
+    <string name="utils">Utilities</string>
+    <string name="speak_clipboard">Speak Clipboard</string>
+    <string name="canceled">Speaker can\'t speak because of one of your settings</string>
+    <string name="no_clipboard">Nothing in the clipboard sir!</string>
+    <string name="speak_clipbaord_description">Speak the contents of your clipboard</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="tts_setup">Speaker Setup</string>
+    <string name="tts_ok">Speaker should work!</string>
+    <string name="tts_no_tts">You haven\'t set up TTS on your device. Tap here to do that now</string>
 </resources>
