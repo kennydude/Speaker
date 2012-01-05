@@ -11,6 +11,7 @@
     <string name="wont_speak_desktop">Desktop notifications will not be spoken</string>
     <string name="speak_desktop_notifications">Speak notifications sent to Android Desktop Notifier</string>
     <string name="test_desktop_notifer">Test Desktop Notifier</string>
+    <string name="unknown">Unknown</string>
     <string name="test_desktop_notifier_hint">Sends a test notification via Desktop Notifier</string>
     <string name="telephone_options">Phone related settings</string>
     <string name="notify_calls">Announce incoming calls</string>

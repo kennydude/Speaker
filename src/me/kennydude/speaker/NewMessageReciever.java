@@ -21,7 +21,10 @@ public class NewMessageReciever extends BroadcastReceiver {
             Object[] pdus = (Object[])bundle.get("pdus");
             for (int i = 0; i < pdus.length; i++) {
                 SmsMessage msg = SmsMessage.createFromPdu((byte[])pdus[i]);
-                String name = SpeakerShared.getNameByPhone(msg.getDisplayOriginatingAddress(), cntxt);
+                String name = cntxt.getString(R.string.unknown);
+                if(msg.getDisplayOriginatingAddress() != null){
+                	name = SpeakerShared.getNameByPhone(msg.getDisplayOriginatingAddress(), cntxt);
+                }
                 Log.d("f", "Sending message to speaker");
                 try{
                 	String text = sp.getString("smsOutput", null);
