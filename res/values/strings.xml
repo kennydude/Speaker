@@ -55,4 +55,7 @@
     <string name="tts_setup">Speaker Setup</string>
     <string name="tts_ok">Speaker should work!</string>
     <string name="tts_no_tts">You haven\'t set up TTS on your device. Tap here to do that now</string>
+    <string name="sush_calls">Shush during calls</string>
+    <string name="sush_calls_on">Speaker will not speak during calls</string>
+    <string name="shush_calls_off">Speaker will still speak during calls</string>
 </resources>

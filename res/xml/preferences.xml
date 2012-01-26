@@ -35,6 +35,7 @@
 		<CheckBoxPreference android:summaryOn="@string/renotify_on"
 			android:key="renotifyCalls" android:summaryOff="@string/renotify_off"
 			android:title="@string/renotify_calls" android:defaultValue="true" />
+		<CheckBoxPreference android:summaryOff="@string/shush_calls_off" android:title="@string/sush_calls" android:defaultValue="true" android:summaryOn="@string/sush_calls_on" android:key="shushCalls"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:key="thirdParty"
 		android:title="@string/third_party">

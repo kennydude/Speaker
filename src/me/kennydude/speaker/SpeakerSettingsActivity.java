@@ -36,10 +36,16 @@ public class SpeakerSettingsActivity extends PreferenceActivity {
 				ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
 				
 				Intent i = new Intent("me.kennydude.speaker.SPEAK_MESSAGE");
-				String s = clipboardManager.getText().toString();
-				if(s == null){
-					s = getString(R.string.no_clipboard);
-				} else if(s.equals("")){
+				String s;
+				try{
+					s = clipboardManager.getText().toString();
+					if(s == null){
+						s = getString(R.string.no_clipboard);
+					} else if(s.equals("")){
+						s = getString(R.string.no_clipboard);
+					}
+				} catch(Exception e){
+					e.printStackTrace();
 					s = getString(R.string.no_clipboard);
 				}
 				

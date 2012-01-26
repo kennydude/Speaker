@@ -20,7 +20,22 @@ public class SpeakerShared {
             Uri uri = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
             Cursor cr = resolver.query(uri, new String[]{PhoneLookup.DISPLAY_NAME}, null, null, null);
             cr.moveToFirst();
-            return cr.getString(0);
+            if(cr.getCount() != 0){
+            	return cr.getString(0);
+            }
+            
+            try{
+	        	String number = ""; // Trick tts
+	        	char[] numbers = phoneNumber.toCharArray();
+	        	for(char n : numbers){
+	        		number += n + " ";
+	        	}
+	        	return number;
+        	} catch(Exception ae){
+        		return cntxt.getString(R.string.unknown_number);
+        	}
+            
+            
         }catch(Exception e){
         	try{
 	        	e.printStackTrace();

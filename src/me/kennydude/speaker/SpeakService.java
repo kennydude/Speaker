@@ -7,14 +7,18 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnUtteranceCompletedListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -73,15 +77,24 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 
     @Override
     public void onDestroy() {
-    	/*try{
+    	this.unregisterReceiver(receiver);
+    	
+    	Log.d("speaker", "Speaker service shutting down");
+    	try{
     		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.cancel(NOTIFY);
-    	} catch(Exception e){ e.printStackTrace(); }*/
+    	} catch(Exception e){ e.printStackTrace(); }
+    	
         if (mTts != null) {
-            mTts.stop();
             mTts.shutdown();
         }
         super.onDestroy();
+        
+        try {
+			this.finalize();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
     }
 	
 	
@@ -129,6 +142,12 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 			audio.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, AudioManager.FLAG_VIBRATE);
 		}
 		
+		if(sp.getBoolean("shushCalls", true) && 
+				((TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE)).getCallState() == TelephonyManager.CALL_STATE_OFFHOOK){
+			notifyIfCanceled();
+			return;
+		}
+		
 		spokenText = text;
 		mTts = new TextToSpeech(this, this);
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -145,6 +164,22 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 		notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_AUTO_CANCEL;
 		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 		mNotificationManager.notify(spokenText.hashCode(), notification);
+		
+		receiver = new Reciever();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction("me.kennydude.speaker.STOP_SPEAKING");
+		this.registerReceiver(receiver, filter);
+	}
+	Reciever receiver;
+	
+	class Reciever extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {
+			mTts.stop();
+			SpeakService.this.stopSelf();
+		}
+		
 	}
 	
 	@Override

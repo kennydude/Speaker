@@ -1,7 +1,5 @@
 package me.kennydude.speaker;
 
-import java.util.Calendar;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -54,6 +52,15 @@ public class PhoneStateReciever extends BroadcastReceiver {
 		    	alm.cancel(pI);
 			}
 		}
+		
+		if(TelephonyManager.EXTRA_STATE_OFFHOOK.equals(state)){
+			SharedPreferences sp = SpeakerShared.getPrefs(cntxt);
+			if(sp.getBoolean("shushCalls", true)){
+				Intent shush = new Intent("me.kennydude.speaker.STOP_SPEAKING");
+				cntxt.sendBroadcast(shush);
+			}
+		}
+		
 	}
 
 }
