@@ -1,0 +1,451 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"P",
+				"PurchaseStatus"
+			],
+			[
+				"Speak",
+				"SpeakerSettingsActivity"
+			],
+			[
+				"respo",
+				"responseCodeIndex"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "AndroidManifest.xml",
+			"settings":
+			{
+				"buffer_size": 2268,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/me/kennydude/speaker/Pro.java",
+			"settings":
+			{
+				"buffer_size": 1863,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "res/xml/preferences.xml",
+			"settings":
+			{
+				"buffer_size": 3965,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/me/kennydude/speaker/SpeakerSettingsActivity.java",
+			"settings":
+			{
+				"buffer_size": 5183,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "res/layout/per_contact.xml",
+			"settings":
+			{
+				"buffer_size": 692,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/me/kennydude/speaker/PerContactSettings.java",
+			"settings":
+			{
+				"buffer_size": 1045,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "res/values/strings.xml",
+			"settings":
+			{
+				"buffer_size": 5133,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/AntAndroid.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/FroyoDucking.java",
+		"/home/kennydude/workspace/Speaker/res/values/strings.xml",
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/SpeakService.java",
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/SpeakerSettingsActivity.java",
+		"/home/kennydude/workspace/Speaker/project.properties",
+		"/home/kennydude/workspace/mycloudCheckout/project.properties",
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/pro/BillingReciever",
+		"/opt/android/extras/google/market_billing/src/com/example/dungeons/BillingReceiver.java",
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/pro/BillingService.java",
+		"/opt/android/extras/google/market_billing/src/com/example/dungeons/BillingService.java",
+		"/opt/android/extras/google/market_billing/src/com/example/dungeons/Security.java",
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/PhoneStateReciever.java",
+		"/home/kennydude/workspace/Speaker/src/me/kennydude/speaker/Pro.java",
+		"/home/kennydude/.config/sublime-text-2/Packages/User/AntAndroid.sublime-build",
+		"/opt/android/tools/ant/build.xml",
+		"/opt/android/platforms/android-8/templates/android_rules.xml",
+		"/home/kennydude/workspace/Speaker/Makefile",
+		"/home/kennydude/workspace/Speaker/AndroidManifest.xml",
+		"/home/kennydude/index.html",
+		"/home/kennydude/login-aruba.sh",
+		"/opt/android/samples/android-8/source.properties"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"aaptexec",
+			"gen.absolute.dir",
+			"v.option",
+			"package-helper",
+			"<package-heler",
+			"package-helper",
+			"signjar",
+			"signe",
+			"sign.package",
+			"debug",
+			"<jar",
+			"\"debug",
+			"android.target.classpath"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "AndroidManifest.xml",
+					"settings":
+					{
+						"buffer_size": 2268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1564,
+								1564
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/me/kennydude/speaker/Pro.java",
+					"settings":
+					{
+						"buffer_size": 1863,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								693,
+								704
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "res/xml/preferences.xml",
+					"settings":
+					{
+						"buffer_size": 3965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								688,
+								688
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/me/kennydude/speaker/SpeakerSettingsActivity.java",
+					"settings":
+					{
+						"buffer_size": 5183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3534,
+								3534
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "res/layout/per_contact.xml",
+					"settings":
+					{
+						"buffer_size": 692,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								373,
+								373
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/me/kennydude/speaker/PerContactSettings.java",
+					"settings":
+					{
+						"buffer_size": 1045,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								244,
+								244
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/me/kennydude/speaker/PerContactSettings.java",
+					"settings":
+					{
+						"buffer_size": 1045,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								145,
+								145
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "res/values/strings.xml",
+					"settings":
+					{
+						"buffer_size": 5133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5119,
+								5119
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1003.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 203.0,
+	"status_bar_visible": true
+}

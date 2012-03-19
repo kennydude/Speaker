@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+	
+	    <TextView
+	        android:text="@string/speak_sms"
+	        android:padding="10dp"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	    
+	    <me.kennydude.speaker.SmoothSeekBar
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/seek">
+	    </me.kennydude.speaker.SmoothSeekBar>
+	    
+	    <CheckBox 
+	        android:id="@+id/sms_privacy"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/sms_privacy"
+	        />
+	    
+	    <TextView
+	        android:text="@string/notify_calls"
+	        android:padding="10dp"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	    
+	    <me.kennydude.speaker.SmoothSeekBar
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/seek_calls">
+	    </me.kennydude.speaker.SmoothSeekBar>
+    
+    </LinearLayout>
+    
+</ScrollView>

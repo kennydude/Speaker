@@ -6,7 +6,13 @@
 	<CheckBoxPreference android:key="globalOption"
 		android:defaultValue="true" android:summaryOn="@string/global_on"
 		android:summaryOff="@string/global_off" android:title="@string/enable_speaker" />
-	<PreferenceCategory android:key="audioOptions"
+	<PreferenceCategory android:title="@string/pro" android:key="proOptions">
+
+		<Preference android:title="@string/pro" android:key="proStatus" android:summary="@string/please_wait"/>
+
+		<Preference android:title="@string/per_contact" android:enabled="false" android:key="perContact" android:summary="@string/per_contact_summary" />
+
+	</PreferenceCategory><PreferenceCategory android:key="audioOptions"
 		android:title="@string/audio_options">
 		<CheckBoxPreference android:summaryOff="@string/headphones_only_off"
 			android:key="headphonesOnly" android:summaryOn="@string/headphones_only_on"
@@ -17,6 +23,7 @@
 		<CheckBoxPreference android:summaryOff="@string/audio_ducking_off"
 			android:key="audioDucking" android:summaryOn="@string/audio_ducking_on"
 			android:defaultValue="true" android:title="@string/audio_ducking" />
+		
 	</PreferenceCategory>
 	<PreferenceCategory android:key="telephoneOptions"
 		android:title="@string/telephone_options">
@@ -58,6 +65,7 @@
 		    android:title="@string/speak_clipboard"
 		    android:summary="@string/speak_clipbaord_description"
 		    />
+		<Preference android:title="@string/reset" android:key="reset" android:summary="@string/reset_description"/>
 	</PreferenceCategory>
 
 </PreferenceScreen>

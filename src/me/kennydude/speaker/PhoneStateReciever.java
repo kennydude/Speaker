@@ -23,15 +23,25 @@ public class PhoneStateReciever extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context cntxt, Intent intent) {
 		String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
-		String incomingNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+		String incomingNumber = SpeakerShared.formatPhoneNumber(intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER));
 		if (TelephonyManager.EXTRA_STATE_RINGING.equals(state)){
-			SharedPreferences sp = SpeakerShared.getPrefs(cntxt);
-			if(sp.getBoolean("notifyCalls", true) == false)
+			Boolean bypass = false;
+			
+			PerContactSettings.PhoneAndLabel pal = SpeakerShared.getPhoneAndLabel(incomingNumber, cntxt);
+			if(pal.announce_call == 2) // Disabled
 				return;
+			else if(pal.announce_call == 1) // bypass
+				bypass = true;
+			
+			SharedPreferences sp = SpeakerShared.getPrefs(cntxt);
+			if(sp.getBoolean("notifyCalls", true) == false && bypass == false)
+				return;
+			
 		    String text = getSpokenText(sp, incomingNumber, cntxt);
 	    	Intent service = new Intent(cntxt, SpeakService.class);
 	    	service.putExtra("speak", text);
 	    	cntxt.startService(service);
+	    	
 	    	if(sp.getBoolean("renotifyCalls", true) == true){
 	    		int sec = 15;
 		        Log.d("x", "added sayback");

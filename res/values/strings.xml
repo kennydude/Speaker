@@ -17,6 +17,14 @@
     <string name="notify_calls">Announce incoming calls</string>
     <string name="will_speak_calls">Speaker will tell you about incoming calls</string>
     <string name="call_readout">{from} is calling you</string>
+    <string name="sms_readout_priv">{from} sent you a text</string>
+    <string name="with_privacy"> (with privacy)</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="sms_privacy">Keep content of SMS readouts private</string>
+    <string name="settings_for_contact">Settings for {name}\'s {line} line</string>
     <string name="talking">Speaker is announcing</string>
     <string name="wont_speak_calls">Speaker will not tell you about incoming calls</string>
     <string name="headphones_only">Headphones only</string>
@@ -58,4 +66,19 @@
     <string name="sush_calls">Shush during calls</string>
     <string name="sush_calls_on">Speaker will not speak during calls</string>
     <string name="shush_calls_off">Speaker will still speak during calls</string>
+    <string name="reset">Reset</string>
+    <string name="reset_description">Clears all notifications and stops any current speaking</string>
+    <string name="pro">Speaker Pro</string>
+    <string name="pro_purchased">Pro is purchased</string>
+    <string name="pro_not_purchased">Pro is not purchased</string>
+    <string name="pro_processing">Purchase of Pro is processing...</string>
+    <string name="pro_thanks">Thank you for purchasing Pro!</string>
+    <string name="pro_error">Error. Tap to retry</string>
+    <string name="per_contact">Per Contact</string>
+    <string name="per_contact_summary">Manage settings on a per-contact basis</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="select_number">Select phone number</string>
+    <string name="default_opt">Default</string>
+    <string name="speak">Speak</string>
+    <string name="dont_speak">Don\'t Speak</string>
 </resources>

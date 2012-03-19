@@ -27,6 +27,8 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 	String spokenText;
 
     public void onInit(int status) {
+    	NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         if (status == TextToSpeech.SUCCESS) {
         	mTts.setOnUtteranceCompletedListener(this);
         	SharedPreferences sp = SpeakerShared.getPrefs(this);
@@ -40,12 +42,11 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
         	params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, spokenText.hashCode() + "");
             mTts.speak(spokenText, TextToSpeech.QUEUE_ADD, params);
         } else{
-        	NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        	mNotificationManager.cancel(spokenText, NOTIFY);
+
     		int icon = R.drawable.ic_stat_talking;
     		CharSequence tickerText = getResources().getText(R.string.tts_no_config);
     		long when = System.currentTimeMillis();
-    		
-    		mNotificationManager.cancel(spokenText.hashCode());
         	
         	Notification notification = new Notification(icon, tickerText, when);
     		Context context = getApplicationContext();
@@ -55,7 +56,7 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
     		notificationIntent.setAction(
                     TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
     		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-    		notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_AUTO_CANCEL;
+    		notification.flags = Notification.FLAG_AUTO_CANCEL;
     		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
     		mNotificationManager.notify(3395785, notification);
         }
@@ -63,7 +64,7 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 
     public void onUtteranceCompleted(String uttId) {
     	NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancel(Integer.parseInt(uttId));
+        mNotificationManager.cancel( spokenText, NOTIFY );
         AudioManager audio = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         
         if(Build.VERSION.SDK_INT >= 8){
@@ -77,13 +78,11 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 
     @Override
     public void onDestroy() {
-    	this.unregisterReceiver(receiver);
+    	try{
+    		this.unregisterReceiver(receiver);
+    	} catch(Exception e){}
     	
     	Log.d("speaker", "Speaker service shutting down");
-    	try{
-    		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            mNotificationManager.cancel(NOTIFY);
-    	} catch(Exception e){ e.printStackTrace(); }
     	
         if (mTts != null) {
             mTts.shutdown();
@@ -100,7 +99,7 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 	
 	// mTts.speak(text, TextToSpeech.QUEUE_ADD, null);
 	
-	int NOTIFY = 324444;
+	public static final int NOTIFY = 324444;
 	
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -163,7 +162,9 @@ public class SpeakService extends Service implements TextToSpeech.OnInitListener
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 		notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_AUTO_CANCEL;
 		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-		mNotificationManager.notify(spokenText.hashCode(), notification);
+		
+		mNotificationManager.notify(spokenText, NOTIFY, notification);
+		
 		
 		receiver = new Reciever();
 		IntentFilter filter = new IntentFilter();

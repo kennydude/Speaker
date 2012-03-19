@@ -14,22 +14,39 @@ public class NewMessageReciever extends BroadcastReceiver {
 	public void onReceive(Context cntxt, Intent intent) {
 		Log.i("f", "Intent recieved: " + intent.getAction());
 		SharedPreferences sp = SpeakerShared.getPrefs(cntxt);
-		if(sp.getBoolean("readSMS", true) == false)
-			return; // We don't access anything the user doesn't want us to
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             Object[] pdus = (Object[])bundle.get("pdus");
             for (int i = 0; i < pdus.length; i++) {
                 SmsMessage msg = SmsMessage.createFromPdu((byte[])pdus[i]);
                 String name = cntxt.getString(R.string.unknown);
+                Boolean bypass = false, private_out = false;
                 if(msg.getDisplayOriginatingAddress() != null){
-                	name = SpeakerShared.getNameByPhone(msg.getDisplayOriginatingAddress(), cntxt);
+                	String phoneNumber = SpeakerShared.formatPhoneNumber( msg.getDisplayOriginatingAddress() );
+                	name = SpeakerShared.getNameByPhone(phoneNumber, cntxt);
+                	
+                	// pro
+                    PerContactSettings.PhoneAndLabel pal = SpeakerShared.getPhoneAndLabel(phoneNumber, cntxt);
+                    Log.d("pal", pal.label);
+                    Log.d("lookup", phoneNumber);
+                    if(pal.announce_sms == 2) // disabled
+                    	return;
+                    else if(pal.announce_sms == 0)
+                    	bypass = true;
+                    private_out = pal.sms_privacy;
+                    Log.d("announce_sms", pal.announce_sms.toString());
                 }
+                // Moved here so Pro features can actually override ;)
+                if(sp.getBoolean("readSMS", true) == false && bypass == false)
+        			return; // We don't access anything the user doesn't want us to
+                
                 Log.d("f", "Sending message to speaker");
                 try{
                 	String text = sp.getString("smsOutput", null);
                 	if(text == null)
                 		text = cntxt.getResources().getString(R.string.sms_readout);
+                	if(private_out == true)
+                		text = cntxt.getResources().getString(R.string.sms_readout_priv);
                 	text = text.replace("{from}", name);
                 	String message = msg.getDisplayMessageBody();
                 	// Now strip out anything that will make the voice go nutty

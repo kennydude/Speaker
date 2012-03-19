@@ -1,5 +1,13 @@
 package me.kennydude.speaker;
 
+import java.util.Locale;
+
+import org.json.JSONObject;
+
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,8 +15,30 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract.PhoneLookup;
+import android.telephony.PhoneNumberUtils;
 
 public class SpeakerShared {
+	
+	public static String formatPhoneNumber(String number){
+		PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+		try{
+			return phoneUtil.format(phoneUtil.parse(number, Locale.getDefault().getCountry()), PhoneNumberFormat.E164);
+		} catch(Exception e){
+			e.printStackTrace();
+			return number;
+		}
+	}
+	
+	public static PerContactSettings.PhoneAndLabel getPhoneAndLabel(String phoneNumber, Context c){
+		PerContactSettings.PhoneAndLabel pal = new PerContactSettings.PhoneAndLabel();
+		try{
+			SharedPreferences sp = c.getSharedPreferences("PerContact", Context.MODE_PRIVATE);
+			pal.load(new JSONObject(sp.getString(phoneNumber, "{}")));
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return pal;
+	}
 
 	public static SharedPreferences getPrefs(Context r){
 		return PreferenceManager.getDefaultSharedPreferences(r);

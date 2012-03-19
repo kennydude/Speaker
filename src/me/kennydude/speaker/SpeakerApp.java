@@ -14,4 +14,11 @@ public class SpeakerApp extends Application {
 		super();
 		instance = this; // @kennydude edit!
 	}
+	
+	@Override
+	public void onCreate(){
+		super.onCreate();
+		
+		//Pro.getInstance();
+	}
 }
